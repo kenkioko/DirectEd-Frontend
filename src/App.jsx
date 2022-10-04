@@ -1,4 +1,6 @@
-import ScholarshipPoolsPage from './routes/ScholarshipPoolsPage.jsx';
+import ScholarshipPoolsPage from './routes/ScholarshipPoolsPage';
+import ScholarsProgressPage from './routes/ScholarsProgressPage';
+import TransactionsPage from './routes/TransactionsPage';
 import React from "react";
 import {
     createBrowserRouter,
@@ -12,6 +14,18 @@ function App() {
         {
             path: "/",
             element: React.createElement(ScholarshipPoolsPage),
+        },
+        {
+            path: "/pools",
+            element: React.createElement(ScholarshipPoolsPage),
+        },
+        {
+            path: "/progress",
+            element: React.createElement(ScholarsProgressPage),
+        },
+        {
+            path: "/transactions",
+            element: React.createElement(TransactionsPage),
         },
     ]);
 
