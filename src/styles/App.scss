@@ -1,0 +1,13 @@
+$theme-colors: (
+    "primary": #395241,
+    "secondary": #F3EEE2,
+    // "success":    $success,
+    // "info":       $info,
+    // "warning":    $warning,
+    // "danger":     $danger,
+    // "light":      $light,
+    // "dark":       $dark
+);
+
+/* import bootstrap to set changes */
+@import "~bootstrap/scss/bootstrap";
