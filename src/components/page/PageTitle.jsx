@@ -7,7 +7,7 @@ function PageTitle(props) {
         <Container className="py-3 d-flex">
             {props.back &&
                 <div className="back-btn">
-                    <Button variant="secondary" className="text-uppercase" href={props.back.url}>
+                    <Button variant="secondary" size="lg" className="text-uppercase" href={props.back.url}>
                         Back to {' '}
 
                         <span>

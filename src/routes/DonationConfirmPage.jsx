@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PageBase from "../components/page/PageBase";
-import banner from "../images/banner.png";
 
 class DonationConfirmPage extends Component {
     render() {
@@ -12,8 +11,7 @@ class DonationConfirmPage extends Component {
 
         return (
             <PageBase
-                title="Donate to"
-                banner={banner}
+                title="Confirmation"
                 body={body}
             />
         )
