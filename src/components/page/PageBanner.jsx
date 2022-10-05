@@ -3,10 +3,12 @@ import Container from 'react-bootstrap/Container';
 
 function PageTitle(props) {
     return (
-        <Container fluid>
+        <Container fluid className="p-0">
             {props.banner &&
                 <img
-                    src={props.banner.url}
+                    className="w-100"
+                    height="150"
+                    src={props.banner.src}
                     alt={props.banner.alt}
                 />
             }
