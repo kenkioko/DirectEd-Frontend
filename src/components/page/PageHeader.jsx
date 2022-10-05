@@ -17,7 +17,7 @@ function NavBrand() {
                 className="d-inline-block align-top"
             />
 
-            <div class="d-inline-flex flex-column px-2">
+            <div className="d-inline-flex flex-column px-2">
                 <span>DirectEd</span>
                 <span>Realising Potential</span>
             </div>

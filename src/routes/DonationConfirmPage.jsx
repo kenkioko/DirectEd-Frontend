@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import PageBase from "../components/page/PageBase";
+import DonationConfirm from "../components/DonationConfirm";
 
 class DonationConfirmPage extends Component {
     render() {
         const body = (
-            <div className="donation-amount">
-                Donation Confirm Page
-            </div>
+            <DonationConfirm />
         );
 
         return (

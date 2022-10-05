@@ -4,8 +4,6 @@ import Button from 'react-bootstrap/Button';
 
 function DonationAmount(props) {
     const amounts = [1000, 500, 100, "custom"];
-    const amount_btn_style = {width: "10%"};
-    const donate_btn_style = {width: "15%"};
 
     return (
         <Container className="my-5 py-3">
@@ -15,14 +13,14 @@ function DonationAmount(props) {
 
             <div className="d-flex justify-content-center py-5">
                 {amounts.map((amount, idx) => (
-                    <Button variant="secondary" size="lg" className="mx-2" style={amount_btn_style}>
+                    <Button key={idx} variant="secondary" size="lg" className="mx-2 w-10">
                         {amount !== 'custom' && '₳'}{amount}
                     </Button>
                 ))}
             </div>
 
             <div className="d-flex justify-content-center">
-                <Button variant="primary" style={donate_btn_style}>
+                <Button variant="primary" className="w-15" href="/confirmation">
                     Donate
                 </Button>
             </div>
