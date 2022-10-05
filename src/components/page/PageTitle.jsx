@@ -4,18 +4,23 @@ import Button from 'react-bootstrap/Button';
 
 function PageTitle(props) {
     return (
-        <Container className="py-3">
+        <Container className="py-3 d-flex">
             {props.back &&
-                <Button variant="secondary" className="mx-auto text-uppercase" href={props.back.url}>
-                    Back to 
-                    {props.back.name &&
-                        <span>{props.back.name}</span>
-                    }
-                </Button>
+                <div className="back-btn">
+                    <Button variant="secondary" className="text-uppercase" href={props.back.url}>
+                        Back to {' '}
+
+                        <span>
+                            {props.back.text &&
+                                <span>{props.back.text}</span>
+                            }
+                        </span>
+                    </Button>
+                </div>
             }
 
             {props.title &&
-                <div className="page-title">
+                <div className="page-title mx-auto">
                     <h1 className="text-center text-capitalize">
                         {props.title}
                     </h1>

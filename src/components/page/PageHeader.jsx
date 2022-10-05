@@ -12,12 +12,12 @@ function NavBrand() {
             <img
                 src={logo}
                 alt="DirectEd Logo"
-                width="50"
-                height="52.81"
+                width="60"
+                height="60"
                 className="d-inline-block align-top"
             />
 
-            <div class="d-inline-flex flex-column">
+            <div class="d-inline-flex flex-column px-2">
                 <span>DirectEd</span>
                 <span>Realising Potential</span>
             </div>
@@ -56,7 +56,7 @@ function ConnectBtn() {
 function PageHeader() {
     return (
         <Navbar collapseOnSelect expand="lg" bg="primary" variant="light">
-            <Container>
+            <Container className="py-2">
                 <NavBrand />
 
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
