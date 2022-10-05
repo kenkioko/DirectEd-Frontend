@@ -66,7 +66,7 @@ function DonationCard(props) {
                 </div>
 
                 <div className="p-1">
-                    <Button variant="primary">Donate Now</Button>
+                    <Button variant="primary" href="/donation">Donate Now</Button>
                 </div>
             </Card.Body>
         </Card>
