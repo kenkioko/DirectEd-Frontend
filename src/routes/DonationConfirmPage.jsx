@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 import PageBase from "../components/page/PageBase";
 import DonationConfirm from "../components/DonationConfirm";
 
+import { details } from '../mock/data/donation_details';
+
 class DonationConfirmPage extends Component {
     render() {
         const body = (
-            <DonationConfirm />
+            <DonationConfirm details={details}/>
         );
 
         return (

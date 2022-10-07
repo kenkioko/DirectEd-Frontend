@@ -5,6 +5,15 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 
+const fields = {
+    address: 'From address',
+    hash: 'Script hash',
+    amount: 'ADA sent',
+    token: 'Token received',
+    fees: 'Total fees',
+    deadline: 'Deadline',
+};
+
 function DonationDetails(props) {
     return (
         <Row className="align-items-center">
@@ -19,40 +28,16 @@ function DonationDetails(props) {
 }
 
 function DonationConfirm(props) {
-    const fields = {
-        address: {
-            text: 'From address',
-            value: 'addr93d9wek0wewjewas34asd3er4refsdfdsf',
-        },
-        hash: {
-            text: 'Script hash',
-            value: 'drewrfe4323423432432434sdasdds',
-        },
-        amount: {
-            text: 'ADA sent',
-            value: 500,
-        },
-        token: {
-            text: 'Token received',
-            value: 'asset4303asd',
-        },
-        fees: {
-            text: 'Total fees',
-            value: 0.1634,
-        },
-        deadline: {
-            text: 'Deadline',
-            value: '11/23/24',
-        },
-    };
-
     return (
         <Container className="my-5 py-3">
             <div className="d-flex justify-content-center my-5">
                 <Card className="bg-secondary rounded w-50 p-3">
 
                     {Object.keys(fields).map((key) => (
-                        <DonationDetails key={key} field={fields[key]} />
+                        <DonationDetails key={key}  field={{
+                            text: fields[key],
+                            value: props.details[key],
+                        }} />
                     ))}
 
                 </Card>
