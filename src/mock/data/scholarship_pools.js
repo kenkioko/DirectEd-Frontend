@@ -1,5 +1,5 @@
-import st_peters_img from '../images/St. Peters.png';
-import strathmore_img from '../images/Strathmore.png';
+import st_peters_img from '../images/scholarship_pools/St. Peters.png';
+import strathmore_img from '../images/scholarship_pools/Strathmore.png';
 
 export const donations = [
     {
