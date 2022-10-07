@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 import PageBase from "../components/page/PageBase";
-import DonationCard from "../components/DonationCard";
+import ScholarshipPool from "../components/ScholarshipPool";
 import CardGroup from 'react-bootstrap/CardGroup';
 import Container from 'react-bootstrap/Container';
 
-import { donations } from '../mock/data/scholarship_pools';
+import { pools } from '../mock/data/scholarship_pools';
 
 class ScholarshipPollsPage extends Component {
     render() {
         const body = (
             <Container>
                 <CardGroup >
-                    {donations.map((donation, idx) => (
-                        <DonationCard key={idx} donation={donation} />
+                    {pools.map((pool, idx) => (
+                        <ScholarshipPool key={idx} pool={pool} />
                     ))}
                 </CardGroup>
             </Container>

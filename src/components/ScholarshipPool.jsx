@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 
-function DonationDetails(props) {
+function PoolDetails(props) {
     return (
         <div className="d-flex flex-column">
             <Card.Text>{props.data}</Card.Text>
@@ -12,7 +12,7 @@ function DonationDetails(props) {
     );
 }
 
-function DonationProgress(props) {
+function PoolProgress(props) {
     return (
         <div>
             <div className="d-flex justify-content-between">
@@ -28,39 +28,39 @@ function DonationProgress(props) {
     );
 }
 
-function DonationCard(props) {
+function ScholarshipPool(props) {
     return (
         <Card className="mx-5 h-100 rounded border-1 bg-secondary">
-            <Card.Img variant="top" className="h-25" src={props.donation.image} />
+            <Card.Img variant="top" className="h-25" src={props.pool.image} />
             <Card.Body className="text-center">
                 <Card.Title className="text-capitalize py-2">
-                    {props.donation.title}
+                    {props.pool.title}
                 </Card.Title>
 
                 <Card.Subtitle className="py-2">
-                    <Card.Link href={props.donation.read_more_url}>Read More</Card.Link>
+                    <Card.Link href={props.pool.read_more_url}>Read More</Card.Link>
                 </Card.Subtitle>
 
                 <div className="d-flex justify-content-around border-bottom p-4">
-                    <DonationDetails
+                    <PoolDetails
                         text="Scholarships funded"
-                        data={props.donation.scholarship_funded}
+                        data={props.pool.scholarship_funded}
                     />
 
                     <span className="border" />
 
-                    <DonationDetails
+                    <PoolDetails
                         text="Remaining naming rights"
-                        data={props.donation.remaining_rights}
+                        data={props.pool.remaining_rights}
                     />
                 </div>
 
                 <div className="p-3">
-                    <DonationProgress
-                        days_left={props.donation.days_left}
-                        people_donated={props.donation.people_donated}
-                        fund_balance={props.donation.fund_balance}
-                        percent_donated={props.donation.percent_donated}
+                    <PoolProgress
+                        days_left={props.pool.days_left}
+                        people_donated={props.pool.people_donated}
+                        fund_balance={props.pool.fund_balance}
+                        percent_donated={props.pool.percent_donated}
 
                     />
                 </div>
@@ -73,4 +73,4 @@ function DonationCard(props) {
     );
 }
 
-export default DonationCard;
+export default ScholarshipPool;

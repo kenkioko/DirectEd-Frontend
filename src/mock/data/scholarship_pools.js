@@ -1,7 +1,7 @@
 import st_peters_img from '../images/scholarship_pools/St. Peters.png';
 import strathmore_img from '../images/scholarship_pools/Strathmore.png';
 
-export const donations = [
+export const pools = [
     {
         id: 0,
         image: st_peters_img,
