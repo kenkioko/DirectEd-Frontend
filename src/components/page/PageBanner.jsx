@@ -1,7 +1,7 @@
 import React from 'react';
 import Container from 'react-bootstrap/Container';
 
-function PageTitle(props) {
+function PageBanner(props) {
     return (
         <Container fluid className="p-0">
             {props.banner &&
@@ -16,4 +16,4 @@ function PageTitle(props) {
     );
 }
 
-export default PageTitle;
+export default PageBanner;
