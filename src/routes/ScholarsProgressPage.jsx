@@ -1,16 +1,20 @@
 import React, { Component } from 'react';
 import PageBase from "../components/page/PageBase";
+import ScholarsProgress from "../components/ScholarsProgress";
+
+import { progress } from '../mock/data/scholars_progress';
 
 class ScholarsProgressPage extends Component {
     render() {
         const body = (
-            <div className="scholars-progress">
-                scholar's progress
-            </div>
+            <ScholarsProgress progress={progress} />
         );
 
         return (
-            <PageBase body={ body } />
+            <PageBase
+                title="Scholar's Progress"
+                body={body}
+            />
         )
     }
 }
