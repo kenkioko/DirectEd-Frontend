@@ -2,9 +2,9 @@ import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
-
+import ConnectWallet from './ConnectWallet';
 import logo from '../../images/logo.svg';
+import {routes} from '../../config/config';
 
 function NavBrand() {
     return (
@@ -17,7 +17,7 @@ function NavBrand() {
                 className="d-inline-block align-top"
             />
 
-            <div className="d-inline-flex flex-column px-2">
+            <div className="d-inline-flex flex-column text-white px-2">
                 <span>DirectEd</span>
                 <span>Realising Potential</span>
             </div>
@@ -25,35 +25,38 @@ function NavBrand() {
     );
 }
 
-function NavLinks() {
+function NavLinks(props) {
+    const links = Object.keys(routes).filter(key => (
+        routes[key].hasOwnProperty('nav_text')
+    ));
+
+    const classname = (key) => {
+        var classname = "text-uppercase text-white";
+
+        if (props.activeKey === key) {
+            classname += " fw-bold text-decoration-underline";
+        }
+
+        return classname;
+    };
+
     return (
-        <Nav className="me-auto">
-            <Nav.Link className="text-uppercase" href="/pools">Scholarship Pools</Nav.Link>
-            <Nav.Link className="text-uppercase" href="/progress">Scholar's Progress</Nav.Link>
-            <Nav.Link className="text-uppercase" href="/transactions">Transactions</Nav.Link>
+        <Nav className="justify-content-center w-100" activeKey={props.activeKey}>
+            {Object.values(links).map((key) => (
+                <Nav.Link
+                    className={classname(key)}
+                    key={key}
+                    eventKey={key}
+                    href={routes[key].path}
+                >
+                    {routes[key].nav_text}
+                </Nav.Link>
+            ))}
         </Nav>
     );
 }
 
-function ConnectBtn() {
-    return (
-        <Nav>
-            <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">
-                    Another action
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">
-                    Separated link
-                </NavDropdown.Item>
-            </NavDropdown>
-        </Nav>
-    );
-}
-
-function PageHeader() {
+function PageHeader(props) {
     return (
         <Navbar collapseOnSelect expand="lg" bg="primary" variant="light">
             <Container className="py-2">
@@ -61,9 +64,10 @@ function PageHeader() {
 
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
-                    <NavLinks />
-                    <ConnectBtn />
+                    <NavLinks activeKey={props.activeKey}/>
                 </Navbar.Collapse>
+
+                <ConnectWallet />
             </Container>
         </Navbar>
     );

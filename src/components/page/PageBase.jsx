@@ -8,7 +8,7 @@ function PageBase(props) {
     return (
         <div className="page">
             {/* Page header */}
-            <PageHeader />
+            <PageHeader activeKey={props.activeKey}/>
 
             {/* Page banner */}
             <PageBanner banner={props.banner} />

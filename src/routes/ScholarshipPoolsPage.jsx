@@ -20,6 +20,7 @@ class ScholarshipPollsPage extends Component {
 
         return (
             <PageBase
+                activeKey="pools"
                 title="Schorlaship Pools"
                 body={body}
             />
