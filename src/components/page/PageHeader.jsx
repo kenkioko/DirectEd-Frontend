@@ -17,8 +17,8 @@ function NavBrand() {
                 className="d-inline-block align-top"
             />
 
-            <div className="d-inline-flex flex-column text-white px-2">
-                <span>DirectEd</span>
+            <div className="d-inline-flex flex-column text-white px-2 fs-6">
+                <span className="fw-bold">DirectEd</span>
                 <span>Realising Potential</span>
             </div>
         </Navbar.Brand>

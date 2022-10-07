@@ -28,7 +28,7 @@ function PageFooter(props) {
                     />
                 </div>
 
-                <div>
+                <div className="text-white">
                     <p className="p-0 m-0"><span>Terms and Conditions</span> | <span>Privacy Policy</span></p>
                     <p className="p-0 m-0">&copy 2022 DirectEd. All rights reserved.</p>
                 </div>

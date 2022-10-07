@@ -10,7 +10,7 @@ class TransactionsPage extends Component {
         );
 
         return (
-            <PageBase body={ body } />
+            <PageBase body={ body } activeKey="transactions" />
         )
     }
 }

@@ -14,6 +14,7 @@ class ScholarsProgressPage extends Component {
             <PageBase
                 title="Scholar's Progress"
                 body={body}
+                activeKey="progress"
             />
         )
     }
