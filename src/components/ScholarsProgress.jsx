@@ -6,8 +6,9 @@ import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 import Accordion from 'react-bootstrap/Accordion';
 import AccordionContext from 'react-bootstrap/AccordionContext';
-import { useAccordionButton } from 'react-bootstrap/AccordionButton';
 import ProgressBar from 'react-bootstrap/ProgressBar';
+import Image from 'react-bootstrap/Image';
+import { useAccordionButton } from 'react-bootstrap/AccordionButton';
 
 function ProgressDetails(prop) {
     return (
@@ -48,7 +49,7 @@ function ProgressTrack(props) {
                 <Col xs={4}>
                     <Row className="align-items-center">
                         <Col xs={3}>
-                            <img
+                            <Image
                                 className="rounded-circle"
                                 src={props.student.image}
                                 alt={props.student.name}
