@@ -2,18 +2,13 @@ import React from 'react';
 import Modal from 'react-bootstrap/Modal';
 
 function PageModal(props) {
-    return (
-        <Modal
-            show={props.show}
-            onHide={props.handleClose}
-            size={props.size && "md"}
-            backdrop="static"
-            keyboard={false}
-            centered
-        >
+    const modal_content = (
+        <>
             {props.header && (
                 <Modal.Header closeButton>
-                    <Modal.Title>{props.header}</Modal.Title>
+                    <Modal.Title className="w-100">
+                        {props.header}
+                    </Modal.Title>
                 </Modal.Header>
             )}
 
@@ -28,6 +23,22 @@ function PageModal(props) {
                     {props.footer}
                 </Modal.Footer>
             )}
+        </>
+    );
+
+    return (
+        <Modal
+            show={props.show}
+            onHide={props.handleClose}
+            size={props.size}
+            backdrop={props.backdrop}
+            keyboard={false}
+            centered
+        >
+            {props.content
+                ? props.content
+                : modal_content
+            }
         </Modal>
     );
 }

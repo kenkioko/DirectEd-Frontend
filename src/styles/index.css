@@ -5,3 +5,13 @@
 .w-15 {
     width: 15% !important;
 }
+
+.media-card::before {
+    content: url('../images/icons/play_circle.svg');
+    position: absolute;
+    cursor: pointer;
+}
+
+.media-thumbnail {
+    cursor: pointer;
+}
