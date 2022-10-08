@@ -5,6 +5,8 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 
+import { simulateNetworkRequest } from '../mock/data/network_request';
+
 const fields = {
     address: 'From address',
     hash: 'Script hash',
@@ -13,10 +15,6 @@ const fields = {
     fees: 'Total fees',
     deadline: 'Deadline',
 };
-
-function simulateNetworkRequest() {
-    return new Promise((resolve) => setTimeout(resolve, 2000));
-}
 
 function ConfirmButton(props) {
     return (

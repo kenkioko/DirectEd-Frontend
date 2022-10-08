@@ -5,7 +5,7 @@ import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 
 export function PagePopover(props) {
     const popover = (
-        <Popover id="popover-basic">
+        <Popover id="popover-basic" className="w-100">
             {props.header && (
                 <Popover.Header as="h3">
                     {props.header}

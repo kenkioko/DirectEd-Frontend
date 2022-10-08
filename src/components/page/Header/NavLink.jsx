@@ -26,21 +26,29 @@ function Link(props) {
 }
 
 function TransactionLink(props) {
-    const body = (
-        <p className="fw-bold fs-5">
-            The transaction page will be available 
-            after a donation has been made.
-        </p>
-    );
-
     const link = (
         <span>{props.link}</span>
     );
 
+    const header = (
+        <span>
+            The transaction page will be available 
+            after a donation has been made.
+        </span>
+    );
+
+    // const body = (
+    //     <p className="fw-bold fs-5">
+    //         The transaction page will be available 
+    //         after a donation has been made.
+    //     </p>
+    // );
+
     return (
         <Nav>
             <PagePopover
-                body={body}
+                header={header}
+                // body={body}
                 overlay={link}
                 trigger={['hover', 'focus']}
                 placement="bottom"
