@@ -36,7 +36,14 @@ export function PageToast(props) {
     return (
         <Toast show={props.show} onClose={props.handleClose}>
             <Toast.Header>
-                {props.header}
+                {props.header
+                    ? props.header
+                    : (
+                        <p className="me-auto fw-bold p-0 m-0">
+                            {new Date().toLocaleTimeString()}
+                        </p>
+                    )
+                }
             </Toast.Header>
             <Toast.Body>
                 {props.body}

@@ -23,12 +23,12 @@ function ConfirmButton(props) {
         <Button
             variant="primary"
             className="w-15"
-            disabled={props.isLoading}
-            onClick={!props.isLoading ? props.handleClick : null}
+            disabled={props.loading}
+            onClick={!props.loading ? props.handleClick : null}
         >
-            {props.confirmed
-                ? 'Confirmed'
-                : (props.isLoading ? 'Processing ...' : 'Confirm'
+            {props.finished
+                ? 'Finished'
+                : (props.loading ? 'Processing ...' : 'Confirm'
             )}
         </Button>
     );
@@ -53,12 +53,12 @@ class DonationConfirm extends Component {
         super(props);
         this.state = {
             isLoading: null,
-            confirmed: false,
+            isFinished: false,
         };
     }
 
     sendRequest = () => {
-        if (this.state.confirmed) {
+        if (this.state.isFinished) {
             this.props.showThanks();
         }
         else {
@@ -66,10 +66,12 @@ class DonationConfirm extends Component {
                 simulateNetworkRequest().then(() => {
                     this.setState({
                         isLoading: false,
-                        confirmed: true,
+                        isFinished: true,
                     });
 
                     this.props.showThanks();
+                    this.props.showSubmitted();
+                    this.props.showConfirmed();
                 });
             }
 
@@ -97,8 +99,8 @@ class DonationConfirm extends Component {
 
                 <div className="d-flex justify-content-center">
                     <ConfirmButton
-                        confirmed={this.state.confirmed}
-                        isLoading={this.state.isLoading}
+                        finished={this.state.isFinished}
+                        loading={this.state.isLoading}
                         handleClick={(e) => this.sendRequest(e)}
                     />
                 </div>

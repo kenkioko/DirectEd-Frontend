@@ -1,8 +1,9 @@
 import React from 'react';
-import PageModal from "../components/page/PageModal";
 import Button from 'react-bootstrap/Button';
+import PageModal from "./page/PageModal";
+import { PageToast } from "./page/PagePopup";
 
-function ThanksMessage(props) {
+export function ThanksMessage(props) {
     const header = (
         <h4 className="text-center">
             Thank you for your donation to DirectEd
@@ -30,7 +31,7 @@ function ThanksMessage(props) {
     return (
         <PageModal
             show={props.show}
-            handleClose={props.hideThanks}
+            handleClose={props.hideMessage}
             header={header}
             body={body}
             footer={footer}
@@ -38,4 +39,35 @@ function ThanksMessage(props) {
     );
 }
 
-export default ThanksMessage;
+export function SubmittedMessage(props) {
+    const body = (
+        <p>
+            Transaction received to the blockchain.
+            You will receive an email from DirectEd.
+        </p>
+    );
+
+    return (
+        <PageToast
+            show={props.show}
+            handleClose={props.hideMessage}
+            body={body}
+        />
+    );
+}
+
+export function ConfirmedMessage(props) {
+    const body = (
+        <p>
+            Transaction confirmed on the blockchain.
+        </p>
+    );
+
+    return (
+        <PageToast
+            show={props.show}
+            handleClose={props.hideMessage}
+            body={body}
+        />
+    );
+}
