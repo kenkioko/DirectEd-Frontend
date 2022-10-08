@@ -9,6 +9,7 @@ export function MediaThumbnail(props) {
             onClick={props.play}
         >
             <Image
+                thumbnail={true}
                 src={props.thumbnail}
                 alt="media thumbnail"
                 className="media-thumbnail w-100"

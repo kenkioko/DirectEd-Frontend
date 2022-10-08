@@ -50,7 +50,7 @@ function ProgressTrack(props) {
                     <Row className="align-items-center">
                         <Col xs={3}>
                             <Image
-                                className="rounded-circle"
+                                roundedCircle={true}
                                 src={props.student.image}
                                 alt={props.student.name}
                                 width="50"
