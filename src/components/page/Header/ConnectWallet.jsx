@@ -1,7 +1,7 @@
 import React from 'react';
 import Nav from 'react-bootstrap/Nav';
 import Button from 'react-bootstrap/Button';
-import { PagePopover } from './PagePopup';
+import { PagePopover } from '../PagePopup';
 
 function ConnectWallet() {
     const body = (
