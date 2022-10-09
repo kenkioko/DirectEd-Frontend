@@ -32,3 +32,34 @@ export function MediaPlay(props) {
         />
     );
 }
+
+export function NFT(props) {
+    return (
+        <div
+            className="d-flex flex-column justify-content-center align-items-center"
+            onClick={props.display}
+        >
+            <Image
+                thumbnail={true}
+                src={props.token}
+                alt="NFT token"
+                className="media-thumbnail w-100"
+            />
+        </div>
+    );
+}
+
+export function NFTDisplay(props) {
+    const content = (
+        <NFT token={props.token} />
+    )
+
+    return (
+        <PageModal
+            show={props.show}
+            handleClose={props.handleClose}
+            content={content}
+            size="lg"
+        />
+    );
+}

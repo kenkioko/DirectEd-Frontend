@@ -4,9 +4,22 @@ import DonationAmount from "../components/DonationAmount";
 import banner_img from "../images/banner.png";
 
 class DonationAmountPage extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            banner: true,
+        };
+    }
+
+    toogleBanner = (show) => {
+        this.setState({
+            banner: show
+        });
+    }
+
     render() {
         const body = (
-            <DonationAmount />
+            <DonationAmount hideBanner={() => this.toogleBanner(false)} />
         );
 
         const banner = {
@@ -22,7 +35,7 @@ class DonationAmountPage extends Component {
         return (
             <PageBase
                 title="Donate to St. Peters High School"
-                banner={banner}
+                banner={this.state.banner && banner}
                 body={body}
                 back={back}
             />
