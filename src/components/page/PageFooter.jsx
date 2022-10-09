@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button';
 function FooterBtn(props) {
     return (
         <div className="mx-auto">
-            <Button className="text-uppercase" variant="secondary" href={props.url}>
+            <Button className="text-uppercase text-light fw-bold" variant="success" href={props.url}>
                 {props.text}
             </Button>
         </div>
@@ -16,7 +16,7 @@ function PageFooter(props) {
     return (
         <div className="fixed-bottom bg-primary">
             <Container className="d-flex justify-content-between py-2">
-                <div className="d-flex w-50">
+                <div className="d-flex align-self-center w-50">
                     <FooterBtn
                         text="Need Help?"
                         url="https://directed.dev/"
@@ -28,7 +28,7 @@ function PageFooter(props) {
                     />
                 </div>
 
-                <div className="text-white">
+                <div className="text-light">
                     <p className="p-0 m-0"><span>Terms and Conditions</span> | <span>Privacy Policy</span></p>
                     <p className="p-0 m-0">&copy 2022 DirectEd. All rights reserved.</p>
                 </div>
