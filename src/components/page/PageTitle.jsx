@@ -21,7 +21,7 @@ function PageTitle(props) {
 
             {props.title &&
                 <div className="page-title mx-auto">
-                    <h1 className="text-center text-capitalize">
+                    <h1 className="display-1 text-center text-capitalize">
                         {props.title}
                     </h1>
                 </div>

@@ -29,7 +29,7 @@ class ScholarshipPollsPage extends Component {
         const body = (
             <>
                 <Container>
-                    <CardGroup >
+                    <CardGroup className="mx-5">
                         {pools.map((pool, idx) => (
                             <ScholarshipPool key={idx} pool={pool} />
                         ))}

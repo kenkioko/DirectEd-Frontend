@@ -6,9 +6,10 @@ import { routes } from '../../../config/config';
 function Link(props) {
     const classname = (link) => {
         var classname = (props.activeKey === link)
-            ? "text-uppercase text-light"
-            : "text-uppercase text-mute-light";
+            ? "text-light"
+            : "text-mute-light";
 
+        classname += " text-uppercase fs-5";
         if (props.activeKey === link) {
             classname += " fw-bold text-decoration-underline";
         }
