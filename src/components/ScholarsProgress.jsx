@@ -13,15 +13,25 @@ import { useAccordionButton } from 'react-bootstrap/AccordionButton';
 function ProgressDetails(prop) {
     return (
         <Col xs={11} className="px-4">
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                aliquip ex ea commodo consequat. Duis aute irure dolor in
-                reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                culpa qui officia deserunt mollit anim id est laborum.
-            </p>
+            <div>
+                <p className="fw-bold p-0 mb-1">Naivasha, Kenya</p>
+
+                <p>
+                    I'm a web developer with in-depth experience in UI/UX design. In a nutshell,
+                    I create websites that help organizations address business challenges and meet their needs.
+                    I manage everything from website navigation and layout to a company's web hosting and security architecture.
+                </p>
+            </div>
+
+            <div className="d-flex">
+                <p className="me-auto">
+                    <a href="https://{userid}.github.io/{reponame}">
+                        <small>{'https://{userid}.github.io/{reponame}'}</small>
+                    </a>
+                </p>
+
+                <p>Social</p>
+            </div>
         </Col>
     );
 }
@@ -39,6 +49,33 @@ function CustomToggle({ eventKey, callback }) {
         <Button variant="Secondary" onClick={decoratedOnClick}>
             {isCurrentEventKey ? 'Close' : 'More'}
         </Button>
+    );
+}
+
+function Progress(props) {
+    const bars = 5;
+    const bar_max = (100 / bars);
+    const bars_full = Math.floor(props.progress / bar_max);
+
+    return (
+        <ProgressBar className="rounded-0">
+            {Array.from(Array(bars).keys()).map((step) => {
+                const percent = (step < bars_full)
+                    ? bar_max
+                    : (step === bars_full)
+                        ? (props.progress % bar_max) 
+                        : 0;
+
+                return (
+                    <ProgressBar
+                        variant="primary"
+                        key={step}
+                        now={percent}
+                        className="border-start border-end border-2 border-secondary"
+                    />
+                );
+            })}
+        </ProgressBar>
     );
 }
 
@@ -63,9 +100,11 @@ function ProgressTrack(props) {
                         </Col>
                     </Row>
                 </Col>
+
                 <Col xs={6}>
-                    <ProgressBar variant="primary" now={props.student.progress} max="5" />
+                    <Progress progress={props.student.progress} />
                 </Col>
+
                 <Col xs={2}>
                     <CustomToggle eventKey={props.idx} />
                 </Col>
@@ -81,9 +120,15 @@ function ProgressTrack(props) {
 
 function ScholarsProgress(props) {
     return (
-        <Container className="my-5 py-3">
-            <div className="d-flex justify-content-center my-5">
-                <Card className="border bg-secondary rounded w-75 p-3">
+        <Container>
+            <div className="d-flex flex-column justify-content-center">
+                <div className="d-flex align-self-center w-75 py-3">
+                    <h3 className="display-3 text-capitalize">
+                        Progress Track for St. Peters High School
+                    </h3>
+                </div>
+
+                <Card className="align-self-center border bg-secondary rounded w-75 p-3">
 
                     {/* Table header */}
                     <Row className="align-items-center text-center text-capitalize px-3">
