@@ -5,7 +5,9 @@ import { routes } from '../../../config/config';
 
 function Link(props) {
     const classname = (link) => {
-        var classname = "text-uppercase text-white";
+        var classname = (props.activeKey === link)
+            ? "text-uppercase text-light"
+            : "text-uppercase text-mute-light";
 
         if (props.activeKey === link) {
             classname += " fw-bold text-decoration-underline";
@@ -32,7 +34,7 @@ function TransactionLink(props) {
 
     const header = (
         <span>
-            The transaction page will be available 
+            The transaction page will be available
             after a donation has been made.
         </span>
     );

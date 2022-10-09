@@ -52,6 +52,7 @@ function ConnectBtn(props) {
     return (
         <Nav.Item>
             <Button
+                className="fw-bold text-primary px-4"
                 variant="secondary"
                 size="lg"
                 onClick={props.handleClick}

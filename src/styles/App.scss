@@ -1,13 +1,33 @@
+// Required
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+
+// Modify the map
 $theme-colors: (
     "primary": #395241,
     "secondary": #F3EEE2,
-    // "success":    $success,
-    // "info":       $info,
-    // "warning":    $warning,
-    // "danger":     $danger,
-    // "light":      $light,
-    // "dark":       $dark
+    "success": #6B8065,
+    "info": #D4CEBD,
+    "light": #FDFDFD,
+    "dark": #2B3035
 );
+
+// Create your own map
+$custom-colors: (
+  "mute": #949494,
+  "mute-dark": #374756,
+  "mute-light": #E6E6E6,
+);
+
+// Merge the maps
+$theme-colors: map-merge($theme-colors, $custom-colors);
+
+// Remove from the map
+// $theme-colors: map-remove($theme-colors, "info", "warning", "danger");
 
 /* import bootstrap to set changes */
 @import "~bootstrap/scss/bootstrap";
+
+// @import "~bootstrap/scss/maps";
+// @import "~bootstrap/scss/mixins";
+// @import "~bootstrap/scss/root";
