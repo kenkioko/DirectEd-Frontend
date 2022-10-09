@@ -35,17 +35,13 @@ export function MediaPlay(props) {
 
 export function NFT(props) {
     return (
-        <div
-            className="d-flex flex-column justify-content-center align-items-center"
+        <Image
             onClick={props.display}
-        >
-            <Image
-                thumbnail={true}
-                src={props.token}
-                alt="NFT token"
-                className="media-thumbnail w-100"
-            />
-        </div>
+            thumbnail={true}
+            src={props.token}
+            alt="NFT token"
+            className="media-thumbnail"
+        />
     );
 }
 
