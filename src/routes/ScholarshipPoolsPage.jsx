@@ -12,16 +12,24 @@ class ScholarshipPollsPage extends Component {
         super(props);
         this.state = {
             howTo: false,
+            showconnect: false,
         };
     }
 
     componentDidMount() {
         this.toogleHowTo(true);
+        this.toogleConnect(true);
     }
 
     toogleHowTo = (show) => {
         this.setState({
             howTo: show
+        });
+    }
+
+    toogleConnect = (show) => {
+        this.setState({
+            showconnect: show
         });
     }
 
@@ -31,12 +39,16 @@ class ScholarshipPollsPage extends Component {
                 <Container>
                     <CardGroup className="mx-5">
                         {pools.map((pool, idx) => (
-                            <ScholarshipPool key={idx} pool={pool} />
+                            <ScholarshipPool
+                                key={idx}
+                                pool={pool}
+                                connectMessage={() => this.toogleConnect(true)}
+                            />
                         ))}
                     </CardGroup>
                 </Container>
 
-                <DonationHowTo 
+                <DonationHowTo
                     show={this.state.howTo}
                     hideMessage={() => this.toogleHowTo(false)}
                     showMessage={() => this.toogleHowTo(true)}
@@ -49,6 +61,8 @@ class ScholarshipPollsPage extends Component {
                 activeKey="pools"
                 title="Schorlaship Pools"
                 body={body}
+                showconnect={this.state.showconnect}
+                toogleConnect={this.toogleConnect}
             />
         )
     }

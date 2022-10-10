@@ -8,7 +8,11 @@ function PageBase(props) {
     return (
         <div className="page">
             {/* Page header */}
-            <PageHeader activeKey={props.activeKey}/>
+            <PageHeader
+                activeKey={props.activeKey}
+                showconnect={props.showconnect}
+                toogleConnect={props.toogleConnect}
+            />
 
             {/* Page banner */}
             <PageBanner banner={props.banner} />

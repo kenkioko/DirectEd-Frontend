@@ -66,6 +66,13 @@ function PoolProgress(props) {
 }
 
 function ScholarshipPool(props) {
+    const handleClick = (e) => {
+        if(!sessionStorage.getItem('isConnected')) {
+            e.preventDefault();
+            props.connectMessage();
+        }
+    }
+
     return (
         <Card className="mx-5 h-100 rounded border-1 bg-secondary">
             <Card.Img variant="top" className="h-25" src={props.pool.image} />
@@ -107,6 +114,7 @@ function ScholarshipPool(props) {
                         className="text-light fw-bold fs-5 px-4 "
                         variant="primary"
                         href="/donation"
+                        onClick={(e) => handleClick(e)}
                     >
                         Donate Now
                     </Button>

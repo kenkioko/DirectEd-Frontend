@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import Nav from 'react-bootstrap/Nav';
 import Button from 'react-bootstrap/Button';
 import ListGroup from 'react-bootstrap/ListGroup';
@@ -36,7 +36,11 @@ function ConnectPopover(props) {
 
     const overlay = (
         <span>
-            <ConnectBtn handleClick={() => props.toogle(true)} />
+            <ConnectBtn
+                options={props.options}
+                toogle={props.toogle}
+                popup={props.popup}
+            />
         </span>
     )
 
@@ -53,13 +57,28 @@ function ConnectPopover(props) {
 }
 
 function ConnectBtn(props) {
+    const [options, setOptions] = useState(false);
+
+    const handleClick = () => {
+        props.toogle(!options);
+        setOptions(!options);
+    }
+
+    const handleHover = (hover) => {
+        if (!props.options) {
+            props.popup(hover);
+        }
+    }
+
     return (
         <Nav.Item>
             <Button
                 className="text-primary fw-bold fs-4 px-4"
                 variant="secondary"
                 size="lg"
-                onClick={props.handleClick}
+                onClick={handleClick}
+                onMouseEnter={() => handleHover(true)}
+                onMouseOut={() => handleHover(false)}
             >
                 {props.connected
                     ? '$directEd'
@@ -81,12 +100,20 @@ class ConnectWallet extends Component {
                 : false,
             isLoading: false,
             options: false,
-            popup: false,
+            popup: props.show ?? false,
         };
     }
 
     componentDidMount() {
-        this.tooglePopup(true);
+        if (this.props.show) {
+            this.tooglePopup(this.props.show);
+        }
+    }
+
+    componentDidUpdate(prevProps) {
+        if (this.props.show !== prevProps.show) {
+            this.tooglePopup(this.props.show);
+        }
     }
 
     tooglePopup = (toogle) => {
@@ -94,6 +121,8 @@ class ConnectWallet extends Component {
             this.setState({
                 popup: toogle
             });
+
+            this.props.toogleShow(toogle)
         }
     }
 
@@ -102,11 +131,7 @@ class ConnectWallet extends Component {
             options: toogle,
         });
 
-        if (this.state !== undefined) {
-            this.setState({
-                popup: undefined,
-            });
-        }
+        this.tooglePopup(toogle);
     }
 
     sendRequest = () => {
@@ -136,12 +161,15 @@ class ConnectWallet extends Component {
                             loading={this.state.isLoading}
                         />
                     )
-                    : <ConnectPopover
-                        show={this.state.popup}
-                        options={this.state.options}
-                        toogle={this.toogleOptions}
-                        connect={this.sendRequest}
-                    />
+                    : (
+                        <ConnectPopover
+                            show={this.state.popup}
+                            options={this.state.options}
+                            connect={this.sendRequest}
+                            popup={this.tooglePopup}
+                            toogle={this.toogleOptions}
+                        />
+                    )
                 }
             </Nav>
         );

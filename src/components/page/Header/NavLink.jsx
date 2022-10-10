@@ -3,6 +3,8 @@ import Nav from 'react-bootstrap/Nav';
 import { PagePopover } from '../PagePopup';
 import { routes } from '../../../config/config';
 
+const hasTransactions = sessionStorage.getItem('hasTransactions');
+
 function Link(props) {
     const classname = (link) => {
         var classname = (props.activeKey === link)
@@ -17,13 +19,19 @@ function Link(props) {
         return classname;
     };
 
+    const path = () => {
+        return (props.data === 'transactions') && !hasTransactions
+            ? null
+            : routes[props.data].path
+    }
+
     return (
         <Nav.Link
-            className={classname(props.link)}
-            eventKey={props.link}
-            href={routes[props.link].path}
+            className={classname(props.data)}
+            eventKey={props.data}
+            href={path()}
         >
-            {routes[props.link].nav_text}
+            {routes[props.data].nav_text}
         </Nav.Link>
     );
 }
@@ -53,24 +61,26 @@ function TransactionLink(props) {
 }
 
 function NavLink(props) {
-    const links = Object.keys(routes).filter(key => (
-        routes[key].hasOwnProperty('nav_text')
-    ));
-
     return (
         <Nav className="justify-content-center w-75" activeKey={props.activeKey}>
-            {Object.values(links).map((key) => {
-                const link = (
-                    <Link
-                        key={key}
-                        link={key}
-                        activeKey={props.activeKey}
-                    />
-                );
+            {Object.keys(routes).map((key) => {
+                if (routes[key].hasOwnProperty('nav_text')) {
+                    const nav_link = routes[key];
+                    const link = (
+                        <Link
+                            key={key}
+                            data={key}
+                            link={nav_link}
+                            activeKey={props.activeKey}
+                        />
+                    );
 
-                return (key === 'transactions')
-                    ? (<TransactionLink key={key} link={link} />)
-                    : link
+                    return (key === 'transactions') && !hasTransactions
+                        ? (<TransactionLink key={key} link={link} />)
+                        : link
+                }
+                else
+                    return null;
             })}
         </Nav>
     );

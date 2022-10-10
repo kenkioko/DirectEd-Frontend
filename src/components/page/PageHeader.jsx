@@ -33,10 +33,13 @@ function PageHeader(props) {
 
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
-                    <NavLink activeKey={props.activeKey}/>
+                    <NavLink activeKey={props.activeKey} />
                 </Navbar.Collapse>
 
-                <ConnectWallet />
+                <ConnectWallet
+                    show={props.showconnect}
+                    toogleShow={props.toogleConnect}
+                />
             </Container>
         </Navbar>
     );
