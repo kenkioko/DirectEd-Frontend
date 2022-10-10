@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import Image from 'react-bootstrap/Image';
 import ProgressBar from 'react-bootstrap/ProgressBar';
+
+import clock_img from '../images/icons/clock.svg'
 
 function PoolDetails(props) {
     return (
@@ -18,12 +21,29 @@ function PoolDetails(props) {
 }
 
 function PoolProgress(props) {
+    const [deadline, setDeadline] = useState(false);
+    const toogleDeadline = (toogle) => setDeadline(toogle);
+
     return (
         <div>
             <div className="d-flex justify-content-between text-mute">
-                <Card.Text className="p-0 m-0">
-                    <small>{props.days_left} days left</small>
-                </Card.Text>
+                <div className="d-flex">
+                    <small>
+                        <Image
+                            src={clock_img}
+                            alt="deadline"
+                            className="me-2"
+                            onMouseOver={() => toogleDeadline(true)}
+                            onMouseOut= {() => toogleDeadline(false)}
+                        />
+                    </small>
+
+                    {deadline && (
+                        <Card.Text className="p-0 m-0">
+                            <small>{props.days_left} days left</small>
+                        </Card.Text>
+                    )}
+                </div>
 
                 <Card.Text className="p-0 m-0">
                     <small>{props.people_donated} people have donated</small>
