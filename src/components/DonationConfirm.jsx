@@ -34,7 +34,7 @@ function ConfirmButton(props) {
 
 function DonationDetails(props) {
     return (
-        <Row className="align-items-center">
+        <Row className="align-items-center p-2">
             <Col xs={4}>
                 <p>{props.field.text}:</p>
             </Col>

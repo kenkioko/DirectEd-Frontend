@@ -5,7 +5,7 @@ import { PageToast } from "./page/PagePopup";
 
 export function ThanksMessage(props) {
     const header = (
-        <h4 className="text-center">
+        <h4 className="display-4 text-center">
             Thank you for your donation to DirectEd
         </h4>
     );
@@ -13,7 +13,7 @@ export function ThanksMessage(props) {
     const body = (
         <div className="text-center">
             <p className="fs-5">Your donation to St. Peter High School was confirmed.</p>
-            <p className="fs-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            <p className="fs-6 p-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                 eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
                 minim veniam, quis nostrud exercitation ullamco laboris nisi ut
                 aliquip ex ea commodo consequat.
@@ -23,7 +23,12 @@ export function ThanksMessage(props) {
 
     const footer = (
         <div className="d-flex justify-content-center w-100">
-            <Button size="lg" variant="primary" href="/progress">
+            <Button
+                size="lg"
+                variant="secondary"
+                href="/progress"
+                className="text-primary fw-bold"
+            >
                 View Scholar's Progress
             </Button>
         </div>
