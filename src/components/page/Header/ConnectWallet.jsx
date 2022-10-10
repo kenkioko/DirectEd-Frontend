@@ -18,7 +18,11 @@ function ConnectPopover(props) {
         <ListGroup variant="flush">
             {Array.from(Array(3).keys()).map((option, idx) => (
                 <ListGroup.Item key={idx}>
-                    <Button variant="primary" className="w-100">
+                    <Button
+                        variant="primary"
+                        className="w-100"
+                        onClick={props.connect}
+                    >
                         Wallet {option}
                     </Button>
                 </ListGroup.Item>
@@ -32,7 +36,7 @@ function ConnectPopover(props) {
 
     const overlay = (
         <span>
-            <ConnectBtn handleClick={() => props.toogle(true)}/>
+            <ConnectBtn handleClick={() => props.toogle(true)} />
         </span>
     )
 
@@ -69,18 +73,28 @@ function ConnectBtn(props) {
 class ConnectWallet extends Component {
     constructor(props) {
         super(props);
+
+        const isConnected = sessionStorage.getItem('isConnected');
         this.state = {
-            isConnected: false,
+            isConnected: isConnected
+                ? isConnected
+                : false,
             isLoading: false,
             options: false,
-            popup:false,
+            popup: false,
         };
     }
 
     componentDidMount() {
-        this.setState({
-            popup: true
-        });
+        this.tooglePopup(true);
+    }
+
+    tooglePopup = (toogle) => {
+        if (!this.state.isConnected) {
+            this.setState({
+                popup: toogle
+            });
+        }
     }
 
     toogleOptions = (toogle) => {
@@ -98,6 +112,8 @@ class ConnectWallet extends Component {
     sendRequest = () => {
         if (!this.state.isLoading) {
             simulateNetworkRequest().then(() => {
+                sessionStorage.setItem('isConnected', true);
+
                 this.setState({
                     isLoading: false,
                     isConnected: true,
