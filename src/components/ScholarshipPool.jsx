@@ -74,7 +74,7 @@ function ScholarshipPool(props) {
     }
 
     return (
-        <Card className="mx-5 h-100 rounded border-1 bg-secondary">
+        <Card className="mx-5 h-100 bg-secondary border-1 rounded shadow">
             <Card.Img variant="top" className="h-25" src={props.pool.image} />
             <Card.Body className="text-center">
                 <Card.Title as="h3" className="display-3 text-capitalize">

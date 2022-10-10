@@ -32,7 +32,7 @@ function ConnectPopover(props) {
 
     const header = props.options
         ? "Select an option"
-        : "Start by connecting your wallet";
+        : "Start by connecting your wallet.";
 
     const overlay = (
         <span>
@@ -46,12 +46,14 @@ function ConnectPopover(props) {
 
     return (
         <PagePopover
+            closeButton={!props.options}
             show={props.show}
             header={header}
             body={props.options ? options : message}
             overlay={overlay}
             trigger={props.options ? "click" : ['hover', 'focus']}
             placement="bottom"
+            handleClose={() => props.popup(false)}
         />
     );
 }
@@ -78,7 +80,6 @@ function ConnectBtn(props) {
                 size="lg"
                 onClick={handleClick}
                 onMouseEnter={() => handleHover(true)}
-                onMouseOut={() => handleHover(false)}
             >
                 {props.connected
                     ? '$directEd'

@@ -1,22 +1,41 @@
 import React from 'react';
+import Button from 'react-bootstrap/Button';
+import Image from 'react-bootstrap/Image';
 import Toast from 'react-bootstrap/Toast';
 import Popover from 'react-bootstrap/Popover';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 
+import close_img from '../../images/icons/close_dark.svg';
+
 export function PagePopover(props) {
     const popover = (
-        <Popover id="popover-basic" className="w-100">
-            {props.header && (
-                <Popover.Header as="h3">
-                    {props.header}
+        <Popover className="w-100 shadow">
+            {props.closeButton && (
+                <Popover.Header as="div" className="display-6 d-flex bg-light border-0">
+                    <Button
+                        variant="light"
+                        size="sm"
+                        className="ms-auto p-0"
+                        onClick={props.handleClose}
+                    >
+                        <Image src={close_img} alt="close" />
+                    </Button>
                 </Popover.Header>
             )}
 
-            {props.body && (
-                <Popover.Body>
-                    {props.body}
-                </Popover.Body>
-            )}
+            <Popover.Body className="bg-light rounded-bottom rounded-2">
+                {props.header && (
+                    <h5 className="display-5">
+                        {props.header}
+                    </h5>
+                )}
+
+                {props.body && (
+                    <p>
+                        {props.body}
+                    </p>
+                )}
+            </Popover.Body>
         </Popover>
     );
 
@@ -49,7 +68,7 @@ export function PageToast(props) {
                     )
                 }
             </Toast.Header>
-            
+
             <Toast.Body className="text-dark p-5 pt-2">
                 {props.body}
             </Toast.Body>

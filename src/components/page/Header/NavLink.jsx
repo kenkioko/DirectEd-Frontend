@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Nav from 'react-bootstrap/Nav';
 import { PagePopover } from '../PagePopup';
 import { routes } from '../../../config/config';
 
-const hasTransactions = sessionStorage.getItem('hasTransactions');
-
 function Link(props) {
+    const hasTransaction = sessionStorage.getItem('hasTransaction');
+
     const classname = (link) => {
         var classname = (props.activeKey === link)
             ? "text-light"
@@ -20,7 +20,7 @@ function Link(props) {
     };
 
     const path = () => {
-        return (props.data === 'transactions') && !hasTransactions
+        return (props.data === 'transactions') && !hasTransaction
             ? null
             : routes[props.data].path
     }
@@ -30,6 +30,10 @@ function Link(props) {
             className={classname(props.data)}
             eventKey={props.data}
             href={path()}
+            onMouseEnter={(props.data === 'transactions') && !hasTransaction
+                ? () => props.handleMouseEnter(true)
+                : null
+            }
         >
             {routes[props.data].nav_text}
         </Nav.Link>
@@ -51,16 +55,23 @@ function TransactionLink(props) {
     return (
         <Nav>
             <PagePopover
+                closeButton={true}
+                show={props.show}
                 header={header}
                 overlay={link}
                 trigger={['hover', 'focus']}
                 placement="bottom"
+                handleClose={() => props.tooglePopup(false)}
             />
         </Nav>
     );
 }
 
 function NavLink(props) {
+    const [show, setShow] = useState(false);
+    const tooglePopup = (toogle) => setShow(toogle);
+    const hasTransaction = sessionStorage.getItem('hasTransaction');
+
     return (
         <Nav className="justify-content-center w-75" activeKey={props.activeKey}>
             {Object.keys(routes).map((key) => {
@@ -72,11 +83,19 @@ function NavLink(props) {
                             data={key}
                             link={nav_link}
                             activeKey={props.activeKey}
+                            handleMouseEnter={tooglePopup}
                         />
                     );
 
-                    return (key === 'transactions') && !hasTransactions
-                        ? (<TransactionLink key={key} link={link} />)
+                    return (key === 'transactions') && !hasTransaction
+                        ? (
+                            <TransactionLink
+                                key={key}
+                                link={link}
+                                show={show}
+                                tooglePopup={tooglePopup}
+                            />
+                        )
                         : link
                 }
                 else
