@@ -15,8 +15,8 @@ function PageBase(props) {
 
             {/* Page title */}
             <PageTitle
-                title={props.title ?? null}
-                back={props.back ?? null}
+                title={props.title}
+                back={props.back}
             />
 
             {/* Page body */}

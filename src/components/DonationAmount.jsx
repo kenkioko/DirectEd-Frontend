@@ -16,12 +16,20 @@ class DonationAmount extends Component {
         };
     }
 
+    componentWillMount() {
+        this.props.toogleBanner(
+            this.state.amount
+                ? false
+                : true
+        );
+    }
+
     setAmount = (amount) => {
         this.setState({
             amount: amount
         });
 
-        this.props.hideBanner();
+        this.props.toogleBanner(false);
     };
 
     toogleNFT = (toogle) => {
@@ -49,7 +57,11 @@ class DonationAmount extends Component {
                                     key={idx}
                                     variant={this.state.amount === amount ? "primary" : "mute-light"}
                                     size="lg"
-                                    className="w-100 fw-bold text-capitalize"
+                                    className={"w-100 fw-bold text-capitalize"
+                                        + (this.state.amount === amount
+                                            ? " text-light"
+                                            : " text-mute-dark"
+                                        )}
                                     onClick={(e) => this.setAmount(amount, e)}
                                 >
                                     {amount !== 'custom' && '₳'}{amount}
@@ -84,7 +96,7 @@ class DonationAmount extends Component {
                         <Button
                             variant="primary"
                             href="/confirmation"
-                            className="w-15"
+                            className="fw-bold px-5"
                             disabled={this.state.amount > 0 ? false : true}
                         >
                             Donate

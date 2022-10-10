@@ -19,7 +19,7 @@ class DonationAmountPage extends Component {
 
     render() {
         const body = (
-            <DonationAmount hideBanner={() => this.toogleBanner(false)} />
+            <DonationAmount toogleBanner={this.toogleBanner} />
         );
 
         const banner = {
@@ -29,7 +29,7 @@ class DonationAmountPage extends Component {
 
         const back = {
             text: "pool",
-            url: "pools",
+            url: "/pools",
         };
 
         return (

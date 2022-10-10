@@ -1,20 +1,26 @@
 import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
+import Image from 'react-bootstrap/Image';
+
+import back_img from '../../images/icons/back.svg';
 
 function PageTitle(props) {
     return (
         <Container className="py-3 d-flex">
             {props.back &&
                 <div className="back-btn">
-                    <Button variant="secondary" size="lg" className="text-uppercase" href={props.back.url}>
-                        Back to {' '}
+                    <Button variant="light" size="lg"
+                        className="text-uppercase fw-bold"
+                        href={props.back.url}
+                    >
+                        <Image src={back_img} alt="Back To" />
 
-                        <span>
-                            {props.back.text &&
-                                <span>{props.back.text}</span>
-                            }
-                        </span>
+                        {/* {props.back.text && (
+                            <span className="px-2">
+                                {' '} {props.back.text}
+                            </span>
+                        )} */}
                     </Button>
                 </div>
             }

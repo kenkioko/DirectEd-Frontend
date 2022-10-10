@@ -20,7 +20,7 @@ function ConfirmButton(props) {
     return (
         <Button
             variant="primary"
-            className="w-15"
+            className="fw-bold px-5"
             disabled={props.loading}
             onClick={!props.loading ? props.handleClick : null}
         >
