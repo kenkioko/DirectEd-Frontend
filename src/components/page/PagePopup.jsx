@@ -34,18 +34,23 @@ export function PagePopover(props) {
 
 export function PageToast(props) {
     return (
-        <Toast bg="mute-light" show={props.show} onClose={props.handleClose}>
-            <Toast.Header>
+        <Toast
+            bg="mute-light"
+            show={props.show}
+            onClose={props.handleClose}
+        >
+            <Toast.Header className="bg-mute-light text-dark border-0">
                 {props.header
                     ? props.header
                     : (
-                        <h6 className="display-6 me-auto p-0 m-0">
+                        <h6 className="display-6 fw-bold me-auto p-0 m-0">
                             {new Date().toLocaleTimeString()}
                         </h6>
                     )
                 }
             </Toast.Header>
-            <Toast.Body>
+            
+            <Toast.Body className="text-dark p-5 pt-2">
                 {props.body}
             </Toast.Body>
         </Toast>

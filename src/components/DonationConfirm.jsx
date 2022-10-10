@@ -62,6 +62,7 @@ class DonationConfirm extends Component {
         else {
             if (!this.state.isLoading) {
                 simulateNetworkRequest().then(() => {
+                    sessionStorage.setItem('transaction', true);
                     this.setState({
                         isLoading: false,
                         isFinished: true,

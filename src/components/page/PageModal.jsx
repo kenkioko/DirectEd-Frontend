@@ -6,7 +6,7 @@ function PageModal(props) {
     const modal_content = (
         <>
             {props.header && (
-                <Modal.Header closeButton className="border-0">
+                <Modal.Header closeButton className="border-0 align-items-baseline">
                     <Modal.Title className="w-100">
                         {props.header}
                     </Modal.Title>
