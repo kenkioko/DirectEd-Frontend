@@ -1,11 +1,12 @@
 import React from 'react';
 import Modal from 'react-bootstrap/Modal';
+import ModalDialog from 'react-bootstrap/ModalDialog'
 
 function PageModal(props) {
     const modal_content = (
         <>
             {props.header && (
-                <Modal.Header closeButton>
+                <Modal.Header closeButton className="border-0">
                     <Modal.Title className="w-100">
                         {props.header}
                     </Modal.Title>
@@ -19,26 +20,34 @@ function PageModal(props) {
             )}
 
             {props.footer && (
-                <Modal.Footer>
+                <Modal.Footer className="border-0">
                     {props.footer}
                 </Modal.Footer>
             )}
         </>
     );
 
+    const dialog = () => (
+        <ModalDialog
+            size={props.size}
+            centered={true}
+            contentClassName="rounded-4"
+        >
+            {props.content}
+        </ModalDialog>
+    );
+
     return (
         <Modal
             show={props.show}
             onHide={props.handleClose}
-            size={props.size}
             backdrop={props.backdrop}
+            size={props.size}
+            centered={true}
             keyboard={false}
-            centered
+            dialogAs={props.content && dialog}
         >
-            {props.content
-                ? props.content
-                : modal_content
-            }
+            {!props.content && modal_content}
         </Modal>
     );
 }

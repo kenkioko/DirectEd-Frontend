@@ -17,7 +17,7 @@ function DonationHowTo(props) {
     };
 
     const header = (
-        <h4 className="text-center">
+        <h4 className="display-4 text-center">
             How to donate
         </h4>
     );

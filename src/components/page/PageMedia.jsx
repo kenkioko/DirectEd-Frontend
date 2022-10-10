@@ -1,20 +1,32 @@
 import React from 'react';
 import Image from 'react-bootstrap/Image';
 import PageModal from "./PageModal";
+import play_circle from '../../images/icons/play_circle.svg'
+
+const pointer = {
+    cursor: 'pointer'
+};
 
 export function MediaThumbnail(props) {
     return (
         <div
-            className="media-card d-flex justify-content-center align-items-center"
+            className="position-relative"
             onClick={props.play}
+            style={pointer}
         >
             <Image
-                thumbnail={true}
+                src={play_circle}
+                alt="Play"
+                className="position-absolute top-50 start-50 translate-middle"
+            />
+
+            <Image
                 src={props.thumbnail}
                 alt="media thumbnail"
-                className="media-thumbnail w-100"
+                className="w-100"
+                rounded={true}
             />
-        </div>
+        </div >
     );
 }
 
@@ -37,10 +49,10 @@ export function NFT(props) {
     return (
         <Image
             onClick={props.display}
-            thumbnail={true}
             src={props.token}
             alt="NFT token"
-            className="media-thumbnail"
+            rounded={true}
+            style={pointer}
         />
     );
 }
